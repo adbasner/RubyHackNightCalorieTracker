@@ -7,13 +7,17 @@ class PagesController < ApplicationController
       headers = {"x-app-id": api_key[:app_id], "x-app-key": api_key[:app_key]}
       url = "https://trackapi.nutritionix.com/v2/natural/nutrients"
       body = {"query": search_param }
-
-      response = RestClient.post(url, body, headers)
+      begin
+        response = RestClient.post(url, body, headers)
+      rescue RestClient::ExceptionWithResponse => e
+        e.response
+      end
+      
       if response != nil
         @declaration = "You searched for #{search_param}"
         @response = JSON.parse(response.body)
       else
-        content_not_found
+        @declaration = "Couldn't find #{search_param}. Please Search again."
       end
     else 
       @declaration = "Search for a food item"

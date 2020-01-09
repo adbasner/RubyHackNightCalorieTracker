@@ -1,15 +1,18 @@
-<h1><%= @declaration %></h1>
-<% @response["foods"].each do |f| %>
-<ul>
-  <li>Name: <%= f["food_name"] %></li>
-  <li>Brand Name: <%= f["brand_name"] %></li>
-  <li>Serving Quantity: <%= f["serving_qty"] %></li>
-  <li>Serving Unit: <%= f["serving_unit"] %></li>
-  <li>Mass: <%= f["serving_weight_grams"] %></li>
-  <li>Calories: <%= f["nf_calories"] %></li>
-  <li>Fat: <%= f["nf_total_fat"] %></li>
-  <li>Protein: <%= f["nf_protein"] %></li>
-  <li>Carbs: <%= f["nf_total_carbohydrate"] %></li>
-<ul>
+<h3><%= @declaration %></h3>
+<% if @response %>
+  <% @response["foods"].each do |f| %>
+  <ul>
+    <li>Name: <%= f["food_name"] %></li>
+    <li>Brand Name: <%= f["brand_name"] %></li>
+    <li>Serving Quantity: <%= f["serving_qty"] %></li>
+    <li>Serving Unit: <%= f["serving_unit"] %></li>
+    <li>Mass: <%= f["serving_weight_grams"] %></li>
+    <li>Calories: <%= f["nf_calories"] %></li>
+    <li>Fat: <%= f["nf_total_fat"] %></li>
+    <li>Protein: <%= f["nf_protein"] %></li>
+    <li>Carbs: <%= f["nf_total_carbohydrate"] %></li>
+  <ul>
 <% end %>
+<% end %>
+
 
