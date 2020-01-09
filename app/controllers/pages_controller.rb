@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def main
-    search_param = params[:search]
+    search_param = params[:search] || ""
     @declaration = ""
     if search_param != ""
       api_key = Rails.application.credentials.dig(:nutritionix_api)
